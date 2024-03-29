@@ -1,19 +1,20 @@
-import { defineConfig, loadEnv } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { viteMockServe } from "vite-plugin-mock";
+import { defineConfig, loadEnv } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import path from 'path';
+import { viteMockServe } from 'vite-plugin-mock';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ command, mode }) => {
-  const { VITE_APP_MODE, VITE_BASE_URL } = loadEnv(mode, process.cwd());
-  const isDev = VITE_APP_MODE === "development";
+  const { VITE_APP_MODE, VITE_PUBLIC_PATH } = loadEnv(mode, process.cwd());
+  const isDev = VITE_APP_MODE === 'development';
 
   return {
+    base: VITE_PUBLIC_PATH || '/',
     plugins: [
       react(),
       viteMockServe({
-        mockPath: "mock",
-        localEnabled: command === "serve",
+        mockPath: 'mock',
+        localEnabled: command === 'serve',
         // prodEnabled: false,
         //   injectCode: `
         //   import { setupProdMockServer } from './mockProdServer';
@@ -22,21 +23,19 @@ export default defineConfig(({ command, mode }) => {
         logger: true,
       }),
     ],
-    base: VITE_BASE_URL,
     server: {
-      port: 3001,
+      host: true,
       proxy: {
-        "/api": {
-          // 免费的在线REST API
-          target: "http://jsonplaceholder.typicode.com",
+        '/dev-api': {
+          target: 'https://polardaytest.postar.cn/v1', // 测试
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
+          rewrite: (p) => p.replace(/^\/dev-api/, ''),
         },
       },
     },
     resolve: {
       alias: {
-        "@": path.resolve(__dirname, "src"),
+        '@': path.resolve(__dirname, 'src'),
       },
     },
     build: {

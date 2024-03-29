@@ -17,3 +17,8 @@ interface ImportMetaEnv {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+declare module 'stack-keep-alive';
+declare module 'weixin-js-sdk';
+
+declare const AlipayJSBridge: any;
+declare const WeixinJSBridge: any;

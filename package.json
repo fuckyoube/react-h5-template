@@ -12,7 +12,13 @@
     "lint:js": "eslint src --ext .js,.jsx,.ts,.tsx --fix",
     "lint:css": "stylelint **/*.{css,less} --fix",
     "lint:lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "CICD:h5-deploy": "node CICD.js deploy",
+    "CICD:h5-deployBackup": "node CICD.js deployBackup",
+    "CICD:h5-rollback": "node CICD.js rollback",
+    "build-test:h5-deploy": "vite build --mode=test && node CICD.js deploy",
+    "build-prod:h5-deploy": "vite build && node CICD.js deploy",
+    "build:h5-deployBackup": "vite build && node CICD.js deployBackup"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
@@ -24,14 +30,19 @@
     ]
   },
   "dependencies": {
-    "axios": "^1.2.3",
+    "axios": "^1.5.1",
+    "bignumber.js": "^9.1.2",
     "classnames": "^2.3.2",
+    "gtxy-cicd": "^1.0.1",
     "lodash-es": "^4.17.21",
+    "mitt": "^3.0.1",
     "mobx": "^6.7.0",
     "mobx-react": "^7.6.0",
     "mockjs": "^1.1.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-vant": "^3.3.3",
+    "weixin-js-sdk": "^1.6.5"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.4.2",

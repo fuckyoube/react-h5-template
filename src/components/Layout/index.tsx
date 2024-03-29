@@ -1,7 +1,7 @@
-import TabBar from "./TabBar";
-import { Outlet } from "react-router-dom";
-import { Suspense } from "react";
-import "./index.less";
+import TabBar from './TabBar';
+import { Outlet } from 'react-router-dom';
+import { Suspense } from 'react';
+import './index.less';
 
 const Fallback = () => {
   return <div>加载中...</div>;
@@ -15,9 +15,9 @@ const Layout = () => {
           <Outlet />
         </Suspense>
       </main>
-      <nav className="app-tab-bar">
+      {/* <nav className="app-tab-bar">
         <TabBar />
-      </nav>
+      </nav> */}
     </div>
   );
 };

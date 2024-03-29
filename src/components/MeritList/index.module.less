@@ -1,0 +1,23 @@
+.tablelist {
+  height: 172px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  // 隐藏滚动条
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .table {
+    position: relative;
+    z-index: 999;
+    width: 330px;
+    line-height: 30px;
+    table-layout: fixed;
+
+    th {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

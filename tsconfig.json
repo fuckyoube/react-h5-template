@@ -3,12 +3,30 @@
     "baseUrl": "./",
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
+    ],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": false,
     "allowSyntheticDefaultImports": true,
-    "strict": true,
+    // 不允许出现隐式的 any 类型
+    "noImplicitAny": true,
+    // 严格空检查。如果关闭此选项，则 null 和 undefined 两种类型是任意类型的子类型
+    "strictNullChecks": false,
+    // 严格函数类型检查
+    "strictFunctionTypes": true,
+    // 严格绑定检查
+    "strictBindCallApply": true,
+    // 严格属性初始化检查
+    "strictPropertyInitialization": false,
+    // 不允许出现隐式any类型的this
+    "noImplicitThis": true,
+    // 是否开启严格模式
+    // "alwaysStrict": true,
+    "strict": false,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -17,9 +35,18 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": [
+        "src/*"
+      ]
     }
   },
-  "include": ["src", "src/types"],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "include": [
+    "src",
+    "src/types"
+  ],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
 }
